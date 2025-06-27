@@ -85,7 +85,7 @@ Docker Compose will:
 
 Go backend server
 
-Python gRPC server
+Python gRPC server 
 
 Python HTTP server
 
@@ -102,14 +102,14 @@ Copy
 Edit
 cd backend
 go run main.go
-Start the Python LLM Server
+Start the Python LLM Server for grpc uncomment the feedback-service.go and comment http version
 Option 1: gRPC Server
 
 bash
 Copy
 Edit
 cd llmserver
-python main.py
+python server.py
 Option 2: HTTP Server
 
 bash
@@ -143,4 +143,4 @@ localhost:50051 – gRPC service endpoint
 
 LLM HTTP Server
 
-http://localhost:8080/api/... – HTTP fallback endpoint
+http://localhost:80/submit/... – HTTP fallback endpoint
