@@ -1,0 +1,43 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Env files (only pass them via --env-file)
+.env
+.env.*
+
+# Virtualenvs
+venv/
+.venv/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Git and version control
+.git
+.gitignore
+
+# Editor configs
+.vscode/
+.idea/
+*.swp
+
+# Tests (optional)
+tests/
+*.test.py
+
+# Docker-related
+Dockerfile.*
+docker-compose*.yml
+
+# Build artifacts
+build/
+dist/
+*.egg-info/

@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  python-grpc-server:
+    build:
+      context: ./llmserver
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "50051:50051"
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
+       # add your other environment variables here from .example.env
+    restart: always
+
+  go-http-server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - python-grpc-server
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/mydb
+      - PYTHON_GRPC_SERVER=python-grpc-server:50051
+      # add your other environment variables here from .example.env
+    restart: always
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+  
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
