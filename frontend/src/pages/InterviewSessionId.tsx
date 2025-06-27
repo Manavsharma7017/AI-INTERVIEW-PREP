@@ -5,7 +5,7 @@ import { sessionService } from "../services/sesssion";
 import { MessageSquare, ArrowLeft } from "lucide-react";
 import { Card } from "../components/ui/Card";
 import { Badge } from "../components/ui/Badge";
-import { apiClient2 } from "../services/api";
+
 
 interface SessionQuestion {
   id: string;
@@ -45,7 +45,7 @@ export const InterviewSessionId = () => {
       console.error("Error loading session data:", error);
     } finally {
       setIsLoading(false);
-      apiClient2.get(``);
+     
     }
   };
 

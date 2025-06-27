@@ -1,0 +1,32 @@
+syntax ="proto3";
+option go_package = "smart-interview-platform/backend/common";
+message QA {
+  int32 number = 1;
+  string question = 2;
+  string answer = 3;
+}
+
+message UserSubmittion{
+    string Question = 1;
+    string Answer = 2;
+    string Domain = 3;
+    string ResponceId=4;
+    //Arrayof strings
+    repeated QA History = 5;
+}
+message UserSubmittionResponse{
+    string Question = 1;
+    string Answer = 2;
+ 
+    string Clarity = 3;    
+	string Tone = 4; 
+	string Relevance = 5;     
+    string OverallScore =6;
+	string Suggestio=7;
+    string Nextquestion = 8;
+    string NextQuestionDifficulty = 9;
+    string Explanation = 10;
+}
+service UserSubmittionService{
+    rpc SubmitUserSubmittion(UserSubmittion) returns (UserSubmittionResponse);
+}

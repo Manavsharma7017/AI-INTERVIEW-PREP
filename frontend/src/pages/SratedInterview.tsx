@@ -45,6 +45,7 @@ export const SratedInterview = () => {
       toast.error("Failed to end session. Please try again.");
       clearsessionData();
       clearQuestionData();
+      navigate("/");
     } finally {
       navigate("/app/About");
     }
